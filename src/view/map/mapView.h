@@ -6,6 +6,7 @@
 #include <QVBoxLayout>
 #include <QQmlContext>
 #include <QQmlEngine>
+#include <QDir>
 
 class MapView : public QWidget
 {

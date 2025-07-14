@@ -1,4 +1,4 @@
-#include "MapView.h"
+#include "mapView.h"
 
 MapView::MapView(QWidget* parent) : QWidget(parent)
 {
