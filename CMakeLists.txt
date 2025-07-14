@@ -7,7 +7,7 @@ endif()
 
 project ("GroundControlStation")
 
-find_package(Qt5 COMPONENTS 
+find_package(Qt5 CONFIG COMPONENTS 
     Core
     Widgets
     Multimedia
@@ -15,7 +15,7 @@ find_package(Qt5 COMPONENTS
     Concurrent
     #WebEngine
     #WebEngineWidgets
-    Positioning
+    #Positioning
     QuickWidgets
     Quick 
     Qml 
@@ -35,11 +35,11 @@ file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/**/*.h"
 )
 
-set(RESOURCE_FILES
-    resources/resources.qrc
-)
+set(QRC_FILE resources/resources.qrc)
 
-add_executable (GroundControlStation ${SOURCES} ${HEADERS} ${RESOURCE_FILES})
+qt5_add_resources(GENERATED_QRC ${QRC_FILE})
+
+add_executable(GroundControlStation ${SOURCES} ${HEADERS} ${GENERATED_QRC})
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     AUTOMOC ON
@@ -55,11 +55,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt5::Concurrent
     #Qt5::WebEngine
     #Qt5::WebEngineWidgets
-    Qt5::Positioning
+    #Qt5::Positioning
     Qt5::Quick
     Qt5::Qml
     Qt5::QuickWidgets
-    Qt5::Location
     Qt5::Network
     Qt5::Multimedia
     Qt5::MultimediaWidgets

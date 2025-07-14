@@ -1,31 +1,56 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.15
 import QtLocation 5.15
+import QtQuick.Window 2.15
 import QtPositioning 5.15
 
+
 Item {
-    width: 800; height: 600
-
-    Plugin {
-        id: mapPlugin
-        name: "osm"   // or another plugin you prefer
-    }
-
-    Map {
-        anchors.fill: parent
-        plugin: mapPlugin
-        center: QtPositioning.coordinate(59.91, 10.75)  // example coords
-        zoomLevel: 14
-
-        MapQuickItem {
-            anchorPoint.x: icon.width / 2
-            anchorPoint.y: icon.height
-            coordinate: QtPositioning.coordinate(59.91, 10.75)
-            sourceItem: Image {
-                id: icon
-                source: "qrc:/images/drone_icon.png"
-                width: 32; height: 32
+    id: mainPage
+        PositionSource {
+            id: positionSource
+            updateInterval: 3000
+            active: true
+            preferredPositioningMethods: PositionSource.AllPositioningMethods
+            onPositionChanged: {
+                let posData = position.coordinate.toString().split(", ")
+                statusBar.latitudeString = posData[0]
+                statusBar.longitudeString = posData[1]
+                map.center = position.coordinate;
             }
         }
-    }
+
+        Map {
+            id: map
+            anchors.fill: parent
+
+            plugin: Plugin {
+                name: "osm"
+                PluginParameter {
+                    name: "osm.mapping.providersrepository.disabled"
+                    value: "true"
+                }
+            }
+            zoomLevel: 15
+            Image {
+                anchors.fill: parent
+                anchors.leftMargin: 40
+                source: "qrc:/app/Resources/icons/palcement.png"
+                fillMode: Image.PreserveAspectCrop
+                visible: Themes.isRadarPlaced
+            }
+
+            MapQuickItem {
+                coordinate: positionSource.position.coordinate
+                anchorPoint.x: userLocationImage.width / 2
+                anchorPoint.y: userLocationImage.height / 2
+                sourceItem: Image {
+                    id: userLocationImage
+                    source: "qrc:/app/Resources/icons/back.svg"
+                    width: 24
+                    height: width
+                    anchors.centerIn: parent
+                }
+            }  
+       }
 }
+
