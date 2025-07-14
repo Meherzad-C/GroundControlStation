@@ -25,6 +25,7 @@ public:
 
 private:
     MapView* mapView;
+    VideoView* videoView;
 };
 
 #endif // MAINWINDOW_H

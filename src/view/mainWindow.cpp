@@ -9,10 +9,8 @@ MainWindow::MainWindow(QWidget* parent)
     layout->setContentsMargins(0, 0, 0, 0);
 
     // --- VIDEO MVC ---
-    auto* videoView = new VideoWidget(this);
-    auto* videoModel = new VideoModel(this);
-    auto* videoController = new VideoController(videoModel, videoView);
-    videoController->startVideo();
+    videoView = new VideoView(this);
+    videoView->startVideo();
 
     // Optional: Force reasonable size for video
     videoView->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);

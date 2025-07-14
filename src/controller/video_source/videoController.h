@@ -3,12 +3,15 @@
 #include "../../model/video_source/videoModel.h"
 #include "../../view/video/videoView.h"
 
-class VideoController {
+class VideoView;
+
+class VideoController : public QObject {
+    Q_OBJECT
 public:
-    VideoController(VideoModel* model, VideoWidget* view);
+    VideoController(VideoView* videoView, QObject* parent = nullptr);
     void startVideo();
 
 private:
-    VideoModel* model;
-    VideoWidget* view;
+    VideoModel* videoModel;
+    VideoView* videoView;
 };

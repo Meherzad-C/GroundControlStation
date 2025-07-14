@@ -1,9 +1,10 @@
 #include "videoController.h"
 
-VideoController::VideoController(VideoModel* model, VideoWidget* view)
-    : model(model), view(view) {}
+VideoController::VideoController(VideoView* videoView, QObject* parent)
+	: QObject(parent), videoModel(new VideoModel(this)), videoView(videoView) {
+}
 
 void VideoController::startVideo() {
-    model->getCamera()->setViewfinder(view->getViewfinder());
-    model->getCamera()->start();
+	videoModel->getCamera()->setViewfinder(videoView->getViewfinder());
+	videoModel->getCamera()->start();
 }
