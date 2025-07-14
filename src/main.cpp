@@ -2,6 +2,7 @@
 
 #include "GroundControlStation.h"
 
-void main() {
-	std::cout << "This is a Ground Control Station" << std::endl;
+int main(int argc, char* argv[]) {
+	GroundControlStation gcs;
+	return gcs.run(argc, argv);
 }
