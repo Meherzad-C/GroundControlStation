@@ -4,11 +4,11 @@
 #include <QCamera>
 #include <QCameraViewfinder>
 
-class VideoModel : public QObject {
+class VideoFeedModel : public QObject {
     Q_OBJECT
 
 public:
-    explicit VideoModel(QObject* parent = nullptr);
+    explicit VideoFeedModel(QObject* parent = nullptr);
     QCamera* getCamera();
     QCameraViewfinder* getViewfinder();
 

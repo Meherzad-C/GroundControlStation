@@ -4,20 +4,20 @@
 #include <QVBoxLayout>
 #include <QVideoWidget>
 
-#include "../../controller/video_source/fileVideoController.h"
+#include "../../controller/video_source/videoFileController.h"
 
-class FileVideoController;
+class VideoFileController;
 class QVideoWidget;
 
-class FileVideoView : public QWidget {
+class VideoFileView : public QWidget {
     Q_OBJECT
 
 public:
-    explicit FileVideoView(QWidget* parent = nullptr);
+    explicit VideoFileView(QWidget* parent = nullptr);
     void startPlayback(const QString& path);
     void setVideoOutput(QVideoWidget* videoOutput);
 
 private:
-    FileVideoController* videoController;
+    VideoFileController* videoFeedController;
     QVBoxLayout* layout;
 };

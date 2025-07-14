@@ -4,11 +4,11 @@
 #include <QMediaPlayer>
 #include <QVideoWidget>
 
-class FileVideoModel : public QObject {
+class VideoFileModel : public QObject {
     Q_OBJECT
 
 public:
-    explicit FileVideoModel(QObject* parent = nullptr);
+    explicit VideoFileModel(QObject* parent = nullptr);
 
     QMediaPlayer* getMediaPlayer();
     QVideoWidget* getVideoWidget();

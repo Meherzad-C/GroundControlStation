@@ -12,10 +12,10 @@
 #include <QWidget>
 
 #include "map/mapView.h"
-#include "video/videoView.h"
-#include "video/fileVideoView.h"
-//#include "../model/video_source/videoModel.h"
-//#include "../controller/video_source/videoController.h"
+#include "video/videoFeedView.h"
+#include "video/videoFileView.h"
+//#include "../model/video_source/videoFeedModel.h"
+//#include "../controller/video_source/videoFeedController.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -26,7 +26,7 @@ public:
 
 private:
     MapView* mapView;
-    VideoView* videoView;
+    VideoFeedView* videoFeedView;
 };
 
 #endif // MAINWINDOW_H

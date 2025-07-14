@@ -1,6 +1,6 @@
-#include "videoModel.h"
+#include "videoFeedModel.h"
 
-VideoModel::VideoModel(QObject* parent)
+VideoFeedModel::VideoFeedModel(QObject* parent)
     : QObject(parent)
 {
     camera = new QCamera(this);
@@ -9,10 +9,10 @@ VideoModel::VideoModel(QObject* parent)
     camera->start();
 }
 
-QCamera* VideoModel::getCamera() { 
+QCamera* VideoFeedModel::getCamera() { 
     return camera; 
 }
 
-QCameraViewfinder* VideoModel::getViewfinder() {
+QCameraViewfinder* VideoFeedModel::getViewfinder() {
     return viewfinder; 
 }

@@ -1,36 +1,36 @@
-#include "fileVideoModel.h"
+#include "videoFileModel.h"
 
-FileVideoModel::FileVideoModel(QObject* parent)
+VideoFileModel::VideoFileModel(QObject* parent)
 	: QObject(parent),
 	mediaPlayer(new QMediaPlayer(this)),
 	videoWidget(new QVideoWidget) {
 	mediaPlayer->setVideoOutput(videoWidget);
 
 	connect(mediaPlayer, &QMediaPlayer::mediaStatusChanged,
-		this, &FileVideoModel::handleMediaStatusChanged);
+		this, &VideoFileModel::handleMediaStatusChanged);
 }
 
-QMediaPlayer* FileVideoModel::getMediaPlayer() {
+QMediaPlayer* VideoFileModel::getMediaPlayer() {
 	return mediaPlayer;
 }
 
-QVideoWidget* FileVideoModel::getVideoWidget() {
+QVideoWidget* VideoFileModel::getVideoWidget() {
 	return videoWidget;
 }
 
-void FileVideoModel::setSource(const QString& filePath) {
+void VideoFileModel::setSource(const QString& filePath) {
 	mediaPlayer->setMedia(QUrl::fromLocalFile(filePath));
 }
 
-void FileVideoModel::play() {
+void VideoFileModel::play() {
 	mediaPlayer->play();
 }
 
-void FileVideoModel::stop() {
+void VideoFileModel::stop() {
 	mediaPlayer->stop();
 }
 
-void FileVideoModel::handleMediaStatusChanged(QMediaPlayer::MediaStatus status) {
+void VideoFileModel::handleMediaStatusChanged(QMediaPlayer::MediaStatus status) {
 	if (status == QMediaPlayer::EndOfMedia) {
 		mediaPlayer->setPosition(0);
 		// loop the video

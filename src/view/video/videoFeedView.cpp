@@ -1,7 +1,7 @@
-#include "videoView.h"
+#include "videoFeedView.h"
 
-VideoView::VideoView(QWidget* parent) : QWidget(parent) {
-	videoController = new VideoController(this, this);
+VideoFeedView::VideoFeedView(QWidget* parent) : QWidget(parent) {
+	videoFeedController = new VideoFeedController(this, this);
 	viewfinder = new QCameraViewfinder(this);
 	viewfinder->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
@@ -11,10 +11,10 @@ VideoView::VideoView(QWidget* parent) : QWidget(parent) {
 	setLayout(layout);
 }
 
-QCameraViewfinder* VideoView::getViewfinder() {
+QCameraViewfinder* VideoFeedView::getViewfinder() {
 	return viewfinder;
 }
 
-void VideoView::startVideo() {
-	videoController->startVideo();
+void VideoFeedView::startVideo() {
+	videoFeedController->startVideo();
 }

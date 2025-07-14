@@ -13,12 +13,12 @@ MainWindow::MainWindow(QWidget* parent)
     videoLayout->setContentsMargins(0, 0, 0, 0);
 
     // Live camera feed
-    auto* cameraWidget = new VideoView(videoViewContainer);
+    auto* cameraWidget = new VideoFeedView(videoViewContainer);
     cameraWidget->startVideo();
     videoLayout->addWidget(cameraWidget);
 
     // File-based video playback
-    auto* fileWidget = new FileVideoView(videoViewContainer);
+    auto* fileWidget = new VideoFileView(videoViewContainer);
     fileWidget->startPlayback((QStringLiteral("..\\..\\..\\resources\\videos\\video.mp4")));
     videoLayout->addWidget(fileWidget);
 
