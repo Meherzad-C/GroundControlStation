@@ -20,6 +20,8 @@ find_package(Qt5 COMPONENTS
     Quick 
     Qml 
     Network
+    Multimedia 
+    MultimediaWidgets
     REQUIRED
 )
 
@@ -59,6 +61,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt5::QuickWidgets
     Qt5::Location
     Qt5::Network
+    Qt5::Multimedia
+    Qt5::MultimediaWidgets
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

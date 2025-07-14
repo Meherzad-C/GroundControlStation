@@ -7,14 +7,21 @@
 #include <QLabel>
 #include <QVBoxLayout>
 
+#include <QHBoxLayout>
+#include <QSplitter>
+#include <QWidget>
+
 #include "map/mapView.h"
+#include "video/videoView.h"
+#include "../model/video_source/videoModel.h"
+#include "../controller/video_source/videoController.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     explicit MainWindow(QWidget* parent = nullptr);
-    ~MainWindow();
+    ~MainWindow() = default;
 
 private:
     MapView* mapView;
