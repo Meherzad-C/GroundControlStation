@@ -1,18 +1,13 @@
 #include "videoFeedModel.h"
 
 VideoFeedModel::VideoFeedModel(QObject* parent)
-    : QObject(parent)
-{
-    camera = new QCamera(this);
-    viewfinder = new QCameraViewfinder;
-    camera->setViewfinder(viewfinder);
-    camera->start();
+	: QObject(parent), m_camera(new QCamera(this)),
+	m_captureSession(new QMediaCaptureSession(this)) {}
+
+QCamera* VideoFeedModel::getCamera() {
+	return m_camera;
 }
 
-QCamera* VideoFeedModel::getCamera() { 
-    return camera; 
-}
-
-QCameraViewfinder* VideoFeedModel::getViewfinder() {
-    return viewfinder; 
+QMediaCaptureSession* VideoFeedModel::getCaptureSession() {
+	return m_captureSession;
 }

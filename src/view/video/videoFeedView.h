@@ -2,7 +2,7 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <QCameraViewfinder>
+#include <QVideoWidget>  
 
 #include "../../controller/video_source/videoFeedController.h"
 
@@ -13,10 +13,10 @@ class VideoFeedView : public QWidget {
 
 public:
     explicit VideoFeedView(QWidget* parent = nullptr);
-    QCameraViewfinder* getViewfinder();
+    QVideoWidget* getVideoWidget(); 
     void startVideo();
 
 private:
-    VideoFeedController* videoFeedController;
-    QCameraViewfinder* viewfinder;
+    VideoFeedController* m_videoFeedController;
+    QVideoWidget* m_videoWidget;
 };

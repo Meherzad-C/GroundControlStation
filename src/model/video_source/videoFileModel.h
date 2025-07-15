@@ -21,6 +21,6 @@ private slots:
     void handleMediaStatusChanged(QMediaPlayer::MediaStatus status);
 
 private:
-    QMediaPlayer* mediaPlayer;
-    QVideoWidget* videoWidget;
+    QMediaPlayer* m_mediaPlayer;
+    QVideoWidget* m_videoWidget;
 };

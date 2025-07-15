@@ -1,5 +1,4 @@
-#ifndef MAPVIEW_H
-#define MAPVIEW_H
+#pragma once
 
 #include <QWidget>
 #include <QQuickWidget>
@@ -7,16 +6,15 @@
 #include <QQmlContext>
 #include <QQmlEngine>
 #include <QDir>
+#include <QQmlApplicationEngine>
 
-class MapView : public QWidget
-{
+class MapView : public QWidget {
     Q_OBJECT
 public:
     explicit MapView(QWidget* parent = nullptr);
-
+    QQmlApplicationEngine& engine() { return m_engine; }
 
 private:
-    QQuickWidget* quickWidget;
+    QQuickWidget* m_quickWidget;
+    QQmlApplicationEngine m_engine;
 };
-
-#endif // MAPVIEW_H

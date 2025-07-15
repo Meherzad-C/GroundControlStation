@@ -18,6 +18,6 @@ public:
     void setVideoOutput(QVideoWidget* videoOutput);
 
 private:
-    VideoFileController* videoFeedController;
-    QVBoxLayout* layout;
+    VideoFileController* m_videoFileController;
+    QVBoxLayout* m_layout;
 };

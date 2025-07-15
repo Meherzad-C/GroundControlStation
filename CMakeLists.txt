@@ -7,15 +7,14 @@ endif()
 
 project ("GroundControlStation")
 
-find_package(Qt5 CONFIG COMPONENTS 
+find_package(Qt6 CONFIG COMPONENTS 
     Core
+    Gui
     Widgets
     Multimedia
     Location
     Concurrent
-    #WebEngine
-    #WebEngineWidgets
-    #Positioning
+    Positioning
     QuickWidgets
     Quick 
     Qml 
@@ -37,7 +36,7 @@ file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS
 
 set(QRC_FILE resources/resources.qrc)
 
-qt5_add_resources(GENERATED_QRC ${QRC_FILE})
+qt_add_resources(GENERATED_QRC ${QRC_FILE})
 
 add_executable(GroundControlStation ${SOURCES} ${HEADERS} ${GENERATED_QRC})
 
@@ -48,20 +47,19 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    Qt5::Core
-    Qt5::Widgets
-    Qt5::Multimedia
-    Qt5::Location
-    Qt5::Concurrent
-    #Qt5::WebEngine
-    #Qt5::WebEngineWidgets
-    #Qt5::Positioning
-    Qt5::Quick
-    Qt5::Qml
-    Qt5::QuickWidgets
-    Qt5::Network
-    Qt5::Multimedia
-    Qt5::MultimediaWidgets
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
+    Qt6::Multimedia
+    Qt6::Location
+    Qt6::Concurrent
+    Qt6::Positioning
+    Qt6::Quick
+    Qt6::Qml
+    Qt6::QuickWidgets
+    Qt6::Network
+    Qt6::Multimedia
+    Qt6::MultimediaWidgets
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

@@ -2,49 +2,38 @@
 
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent) {
-    // Central widget setup
     auto* central = new QWidget(this);
-    auto* layout = new QHBoxLayout(central);
-    layout->setContentsMargins(0, 0, 0, 0);
+    auto* layout  = new QHBoxLayout(central);
+    layout->setContentsMargins(0,0,0,0);
 
-    // --- VIDEO SECTION (Left Panel) ---
-    auto* videoViewContainer = new QWidget(this);
-    auto* videoLayout = new QVBoxLayout(videoViewContainer);
-    videoLayout->setContentsMargins(0, 0, 0, 0);
+    // Left Panel: Videos
+    auto* videoPane = new QWidget(this);
+    auto* vLayout   = new QVBoxLayout(videoPane);
+    vLayout->setContentsMargins(0,0,0,0);
 
-    // Live camera feed
-    auto* cameraWidget = new VideoFeedView(videoViewContainer);
-    cameraWidget->startVideo();
-    videoLayout->addWidget(cameraWidget);
+    m_videoFeedView = new VideoFeedView(videoPane);
+    m_videoFeedView->startVideo();
+    vLayout->addWidget(m_videoFeedView);
 
-    // File-based video playback
-    auto* fileWidget = new VideoFileView(videoViewContainer);
-    fileWidget->startPlayback((QStringLiteral("..\\..\\..\\resources\\videos\\video.mp4")));
-    videoLayout->addWidget(fileWidget);
+    auto* file = new VideoFileView(videoPane);
+    file->startPlayback("../../../resources/videos/video.mp4");
+    vLayout->addWidget(file);
 
-    videoLayout->setStretch(0, 1);  // Camera view
-    videoLayout->setStretch(1, 1);  // File video
+    vLayout->setStretch(0,1);
+    vLayout->setStretch(1,1);
 
-    videoViewContainer->setMinimumWidth(200);
-    videoViewContainer->setMaximumWidth(600);
-    videoViewContainer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    // Right Panel: Map/Telemetry View
+    m_telemetryView = new TelemetryView(this);
 
-    // --- MAP VIEW (Right Panel) ---
-    mapView = new MapView(this);
-
-    // --- HORIZONTAL SPLITTER ---
+    // Splitter 
     auto* splitter = new QSplitter(Qt::Horizontal, this);
-    splitter->addWidget(videoViewContainer);
-    mapView->show();
-    splitter->addWidget(mapView);
-
-    splitter->setStretchFactor(0, 1);
-    splitter->setStretchFactor(1, 2);
-    splitter->setSizes({ width() / 3, (2 * width()) / 3 });
+    splitter->addWidget(videoPane);
+    splitter->addWidget(m_telemetryView);
+    splitter->setStretchFactor(0,1);
+    splitter->setStretchFactor(1,2);
 
     layout->addWidget(splitter);
-    central->setLayout(layout);
+    splitter->setSizes({ width() / 3, (2 * width()) / 3 });
     setCentralWidget(central);
-
     showMaximized();
 }

@@ -1,10 +1,12 @@
 #include "videoFileController.h"
 
 VideoFileController::VideoFileController(VideoFileView* videoFileView, QObject* parent)
-    : QObject(parent), videoFeedModel(new VideoFileModel(this)), videoFileView(videoFileView) {}
+    : QObject(parent),
+    m_videoFileModel(new VideoFileModel(this)),
+    m_videoFileView(videoFileView) {}
 
 void VideoFileController::playVideo(const QString& path) {
-    videoFeedModel->setSource(path);
-    videoFileView->setVideoOutput(videoFeedModel->getVideoWidget());
-    videoFeedModel->play();
+    m_videoFileModel->setSource(path);
+    m_videoFileView->setVideoOutput(m_videoFileModel->getVideoWidget());
+    m_videoFileModel->play();
 }

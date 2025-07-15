@@ -2,17 +2,18 @@
 
 #include <QObject>
 #include <QCamera>
-#include <QCameraViewfinder>
+#include <QMediaCaptureSession>
 
 class VideoFeedModel : public QObject {
     Q_OBJECT
 
 public:
     explicit VideoFeedModel(QObject* parent = nullptr);
+
     QCamera* getCamera();
-    QCameraViewfinder* getViewfinder();
+    QMediaCaptureSession* getCaptureSession();
 
 private:
-    QCamera* camera;
-    QCameraViewfinder* viewfinder;
+    QCamera* m_camera;
+    QMediaCaptureSession* m_captureSession;
 };

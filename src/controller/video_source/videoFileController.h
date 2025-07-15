@@ -14,6 +14,6 @@ public:
     void playVideo(const QString& path);
 
 private:
-    VideoFileModel* videoFeedModel;
-    VideoFileView* videoFileView;
+    VideoFileModel* m_videoFileModel;
+    VideoFileView* m_videoFileView;
 };

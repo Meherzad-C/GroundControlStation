@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 #include <QApplication>
@@ -14,8 +13,7 @@
 #include "map/mapView.h"
 #include "video/videoFeedView.h"
 #include "video/videoFileView.h"
-//#include "../model/video_source/videoFeedModel.h"
-//#include "../controller/video_source/videoFeedController.h"
+#include "telemetry/telemetryView.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -25,8 +23,7 @@ public:
     ~MainWindow() = default;
 
 private:
-    MapView* mapView;
-    VideoFeedView* videoFeedView;
+    MapView* m_mapView;
+    VideoFeedView* m_videoFeedView;
+    TelemetryView* m_telemetryView;
 };
-
-#endif // MAINWINDOW_H

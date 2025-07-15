@@ -12,6 +12,6 @@ public:
     void startVideo();
 
 private:
-    VideoFeedModel* videoFeedModel;
-    VideoFeedView* videoFeedView;
+    VideoFeedModel* m_videoFeedModel;
+    VideoFeedView* m_videoFeedView;
 };

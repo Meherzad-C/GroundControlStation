@@ -2,38 +2,37 @@
 
 VideoFileModel::VideoFileModel(QObject* parent)
 	: QObject(parent),
-	mediaPlayer(new QMediaPlayer(this)),
-	videoWidget(new QVideoWidget) {
-	mediaPlayer->setVideoOutput(videoWidget);
+	m_mediaPlayer(new QMediaPlayer(this)),
+	m_videoWidget(new QVideoWidget) {
+	m_mediaPlayer->setVideoOutput(m_videoWidget);
 
-	connect(mediaPlayer, &QMediaPlayer::mediaStatusChanged,
+	connect(m_mediaPlayer, &QMediaPlayer::mediaStatusChanged,
 		this, &VideoFileModel::handleMediaStatusChanged);
 }
 
 QMediaPlayer* VideoFileModel::getMediaPlayer() {
-	return mediaPlayer;
+	return m_mediaPlayer;
 }
 
 QVideoWidget* VideoFileModel::getVideoWidget() {
-	return videoWidget;
+	return m_videoWidget;
 }
 
 void VideoFileModel::setSource(const QString& filePath) {
-	mediaPlayer->setMedia(QUrl::fromLocalFile(filePath));
+	m_mediaPlayer->setSource(QUrl::fromLocalFile(filePath));
 }
 
 void VideoFileModel::play() {
-	mediaPlayer->play();
+	m_mediaPlayer->play();
 }
 
 void VideoFileModel::stop() {
-	mediaPlayer->stop();
+	m_mediaPlayer->stop();
 }
 
 void VideoFileModel::handleMediaStatusChanged(QMediaPlayer::MediaStatus status) {
 	if (status == QMediaPlayer::EndOfMedia) {
-		mediaPlayer->setPosition(0);
-		// loop the video
-		mediaPlayer->play();
+		m_mediaPlayer->setPosition(0);
+		m_mediaPlayer->play();	// loop the video
 	}
 }

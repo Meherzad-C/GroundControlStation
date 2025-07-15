@@ -2,16 +2,16 @@
 
 VideoFileView::VideoFileView(QWidget* parent)
     : QWidget(parent),
-    videoFeedController(new VideoFileController(this)),
-    layout(new QVBoxLayout(this)) {
-    layout->setContentsMargins(0, 0, 0, 0);
-    setLayout(layout);
+    m_videoFileController(new VideoFileController(this)),
+    m_layout(new QVBoxLayout(this)) {
+    m_layout->setContentsMargins(0, 0, 0, 0);
+    setLayout(m_layout);
 }
 
 void VideoFileView::startPlayback(const QString& path) {
-    videoFeedController->playVideo(path);
+    m_videoFileController->playVideo(path);
 }
 
 void VideoFileView::setVideoOutput(QVideoWidget* videoOutput) {
-    layout->addWidget(videoOutput);
+    m_layout->addWidget(videoOutput);
 }
