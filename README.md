@@ -11,6 +11,9 @@ Pre-built binaries are available on the [Releases page](https://github.com/Meher
 To enable local video playback, install the **K-Lite Codec Pack (Basic)**:  
 [https://codecguide.com/download_k-lite_codec_pack_basic.htm](https://codecguide.com/download_k-lite_codec_pack_basic.htm)
 
+Ensure the **Microsoft Visual C++ Redistributables** are installed (ignore if already installed):  
+[https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
+
 ## Build Instructions
 
 ### Recommended: Qt Creator
