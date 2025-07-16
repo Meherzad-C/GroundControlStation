@@ -10,7 +10,6 @@
 #include <QSplitter>
 #include <QWidget>
 
-#include "map/mapView.h"
 #include "video/videoFeedView.h"
 #include "video/videoFileView.h"
 #include "telemetry/telemetryView.h"
@@ -23,7 +22,6 @@ public:
     ~MainWindow() = default;
 
 private:
-    MapView* m_mapView;
     VideoFeedView* m_videoFeedView;
     TelemetryView* m_telemetryView;
 };
