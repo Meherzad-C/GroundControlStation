@@ -8,11 +8,9 @@ Pre-built binaries are available on the [Releases page](https://github.com/Meher
 
 ## Runtime Requirement
 
-To enable local video playback, install the **K-Lite Codec Pack (Basic)**:  
-[https://codecguide.com/download_k-lite_codec_pack_basic.htm](https://codecguide.com/download_k-lite_codec_pack_basic.htm)
+To enable local video playback, install the [K-Lite Codec Pack (Basic)](https://codecguide.com/download_k-lite_codec_pack_basic.htm)
 
-Ensure the **Microsoft Visual C++ Redistributables** are installed (ignore if already installed):  
-[https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
+Ensure the [Microsoft Visual C++ Redistributables](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist) are installed (ignore if already installed):  
 
 ## Build Instructions
 
